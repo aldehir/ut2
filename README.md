@@ -205,3 +205,50 @@ Configure your AWS credentials similarily to the `upload` command.
 ```
 ut2u redirect sync -b my.bucket -p ut2-redirect/ System/UT2004.ini
 ```
+
+
+## Build
+
+The build command simplifies the build process by isolating the package
+definitions into its own ini.
+
+```
+$ ut2u build -h
+Build a UT2004 Mutator/Mod
+
+Usage:
+  ut2u build [pkg-path...]
+
+Flags:
+  -d, --dep strings  Dependency
+  -h, --help         help for build
+```
+
+If no package path is defined, then it assumes the package is the current
+working directory.
+
+```
+$ ut2u build
+```
+
+If your package requires another package, then you may pass in `-d pkg` to
+include that package in the build. This does not build the dependencies, it
+only includes them so they must have a compiled `*.u` file in the `System`
+directory.
+
+```
+$ ut2u build -d UTComp
+```
+
+To build multiple packages when developing them in parallel, then pass each one
+as separate arguments.
+
+```
+$ ut2u build ../WSUTComp .
+
+# If at the root directory:
+$ ut2u build WSUTComp WS3SPN
+```
+
+Note that dependencies must be listed in order. For example, `WS3SPN` dependes
+on `WSUTComp`, therefore `WSUTComp` must come first.

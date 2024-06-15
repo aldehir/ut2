@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
+	"github.com/aldehir/ut2u/cmd/build"
 	"github.com/aldehir/ut2u/cmd/query"
 	"github.com/aldehir/ut2u/cmd/redirect"
 	"github.com/aldehir/ut2u/cmd/upackage"
@@ -20,6 +21,7 @@ func init() {
 	redirect.EnrichCommand(rootCmd)
 	upackage.EnrichCommand(rootCmd)
 	query.EnrichCommand(rootCmd)
+	build.EnrichCommand(rootCmd)
 }
 
 func Execute() error {
