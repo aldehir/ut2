@@ -210,7 +210,9 @@ ut2u redirect sync -b my.bucket -p ut2-redirect/ System/UT2004.ini
 ## Build
 
 The build command simplifies the build process by isolating the package
-definitions into its own ini.
+definitions into a separate ini.
+
+**The UCC compiler only works on Windows.**
 
 ```
 $ ut2u build -h
@@ -232,16 +234,16 @@ $ ut2u build
 ```
 
 If your package requires another package, then you may pass in `-d pkg` to
-include that package in the build. This does not build the dependencies, it
-only includes them so they must have a compiled `*.u` file in the `System`
+include that package as a dependency. This does not build the dependency, it
+only includes them so there must be a compiled `*.u` file in the `System`
 directory.
 
 ```
 $ ut2u build -d UTComp
 ```
 
-To build multiple packages when developing them in parallel, then pass each one
-as separate arguments.
+To build multiple packages when developing in parallel, pass each one as
+separate arguments.
 
 ```
 $ ut2u build ../WSUTComp .
